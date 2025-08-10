@@ -1,7 +1,9 @@
 version: '3'
 services:
   accounting-app:
-    build: .
+    build:
+      context: .
+      dockerfile: DockerFile
     container_name: accounting-app
     ports:
       - "3000:3000"
