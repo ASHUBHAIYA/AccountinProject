@@ -3,6 +3,7 @@ import express from "express";
 import nodemailer from "nodemailer";
 import cors from "cors";
 import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config();
 
@@ -10,6 +11,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 // Serve frontend static files from 'dist'
 app.use(express.static(path.join(__dirname, "dist")));
 
