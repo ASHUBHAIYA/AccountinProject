@@ -2,12 +2,21 @@ import dotenv from "dotenv";
 import express from "express";
 import nodemailer from "nodemailer";
 import cors from "cors";
+import path from "path";
 
 dotenv.config();
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+// Serve frontend static files from 'dist'
+app.use(express.static(path.join(__dirname, "dist")));
+
+// For any other routes, serve index.html (for SPA routing)
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "dist", "index.html"));
+});
 
 // Configure Nodemailer transporter
 const transporter = nodemailer.createTransport({
