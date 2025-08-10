@@ -16,8 +16,11 @@ jobs:
       - name: Create .env file from GitHub Secret
         run: echo "${{ secrets.ENV_FILE }}" > .env
 
+      - name: List files (for debugging)
+        run: ls -la
+
       - name: Build and run Docker container
-        working-directory: ./AccountinProject
+        # Use repo root (default), do NOT add extra working-directory here
         run: |
           docker-compose down
           docker-compose build --no-cache
