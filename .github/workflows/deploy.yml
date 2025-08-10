@@ -17,6 +17,7 @@ jobs:
         run: echo "${{ secrets.ENV_FILE }}" > .env
 
       - name: Build and run Docker container
+        working-directory: ./AccountinProject
         run: |
           docker-compose down
           docker-compose build --no-cache
