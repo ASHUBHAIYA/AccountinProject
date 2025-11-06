@@ -15,25 +15,9 @@ const ServicesPage = () => {
 
   return (
     <main className="bg-background min-h-screen pt-24 flex flex-col overflow-x-hidden">
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-3xl mx-auto mb-16 text-center animate-fade-up">
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Our Services
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Comprehensive Accounting Solutions
-          </h1>
-          <p className="text-xl text-muted-foreground">
-            Discover our range of professional accounting services designed to help Indian businesses thrive.
-          </p>
-        </div>
-      </div>
-      
       <Services />
-      
       <PricingSection />
-      
-      <section className="py-16 md:py-24 bg-white">
+       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center animate-fade-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">

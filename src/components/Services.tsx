@@ -62,7 +62,7 @@ const ServiceCard = ({
   </div>
 );
 
-const Services = ({ limit = 3 }: { limit?: number }) => {
+const Services = ({ limit = 6 }: { limit?: number }) => {
   const services = [
     {
       title: "GST Filing",
@@ -124,14 +124,6 @@ const Services = ({ limit = 3 }: { limit?: number }) => {
             />
           ))}
         </div>
-
-        {limit && (
-          <div className="mt-12 text-center animate-fade-up" style={{ animationDelay: '600ms' }}>
-            <Link to="/services" className={cn(buttonVariants({ variant: "default", size: "lg" }))}>
-              View All Services
-            </Link>
-          </div>
-        )}
       </div>
     </section>
   );

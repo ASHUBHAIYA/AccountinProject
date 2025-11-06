@@ -62,12 +62,12 @@ const Contact = () => {
                 {
                   icon: MapPin,
                   title: "Our Location",
-                  details: "Office No 3, Jawahar Stadium, Satna 485001"
+                  details: "Bagha, Satna, Madhya Pradesh 485001"
                 },
                 {
                   icon: Phone,
                   title: "Call Us",
-                  details: "+91 98765 43210"
+                  details: "+91 7678509300"
                 },
                 {
                   icon: Mail,

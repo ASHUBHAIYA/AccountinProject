@@ -73,26 +73,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-lg font-bold mb-4">Our Services</h3>
-            <ul className="space-y-2">
-              {[
-                "GST Filing",
-                "Income Tax Filing",
-                "Bookkeeping",
-                "Financial Analysis",
-                "Billing & Invoicing",
-                "Tax Consultation"
-              ].map((service, index) => (
-                <li key={index}>
-                  <Link 
-                    to="/services" 
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {service}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            
           </div>
           
           <div>
@@ -101,12 +82,12 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-primary mr-2 shrink-0 mt-0.5" />
                 <span className="text-muted-foreground">
-                Office No 3, Jawahar Stadium, Satna 485001
+                Bagha, Satna, Madhya Pradesh 485001
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-primary mr-2 shrink-0" />
-                <span className="text-muted-foreground">+91 98765 43210</span>
+                <span className="text-muted-foreground">+91 7678509300</span>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-primary mr-2 shrink-0" />
