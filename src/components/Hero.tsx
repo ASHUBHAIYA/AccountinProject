@@ -1,75 +1,223 @@
 
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
-import { buttonVariants } from '@/components/ui/button-variants';
-import { cn } from '@/lib/utils';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { FileText, Calculator, FileCheck, Building2, BookOpen, Receipt, CreditCard, Phone, Mail, User, MessageSquare } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { submitContactForm } from '@/lib/api';
+import { useToast } from '@/hooks/use-toast';
 
 const Hero = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    service: '',
+    message: ''
+  });
+  
+  const services = [
+    { icon: FileText, name: 'GST Filing', description: 'Accurate and timely GST return filing' },
+    { icon: Receipt, name: 'Billing & Invoicing', description: 'Professional billing solutions' },
+    { icon: Calculator, name: 'Income Tax Return', description: 'Expert ITR filing services' },
+    { icon: Building2, name: 'Company Registration', description: 'Complete registration support' },
+    { icon: BookOpen, name: 'Bookkeeping', description: 'Comprehensive bookkeeping services' },
+    { icon: FileCheck, name: 'TDS Filing', description: 'Timely TDS compliance' },
+    { icon: CreditCard, name: 'PAN/TAN Application', description: 'Quick PAN/TAN processing' },
+    { icon: CreditCard, name: '', description: '' },
+  ];
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      await submitContactForm({
+        ...formData,
+        service: 'General Inquiry'
+      });
+      toast({
+        title: "Message sent!",
+        description: "We'll get back to you soon.",
+      });
+      setFormData({ name: '', phone: '', email: '',service: '', message: '' });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <section className="relative pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20" />
-        <div className="absolute top-0 left-0 right-0 h-[1000px] bg-grid-pattern-dots opacity-10" />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col items-center text-center space-y-8 max-w-4xl mx-auto">
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium animate-fade-in">
-            <span>Premium Accounting Services for Indian Businesses</span>
-          </div>
-
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight animate-fade-up" style={{ animationDelay: '150ms' }}>
-            Streamline Your <span className="text-primary">Financial</span> Operations
+    <section className="relative pt-24 pb-16 md:pb-24 bg-gradient-to-br from-background via-primary/5 to-background">
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-12 animate-fade-up">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            Smart Accounts
           </h1>
-
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-up" style={{ animationDelay: '300ms' }}>
-            Comprehensive accounting services tailored for Indian businesses. From GST filing to tax planning, we've got you covered.
+          <p className="text-xl text-muted-foreground">
+            Your trusted partner for accounting, GST & taxation services <br></br>
+            Your Team Working Remotely for you
+            
           </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 animate-fade-up" style={{ animationDelay: '450ms' }}>
-            <Link 
-              to="/contact" 
-              className={cn(buttonVariants({ variant: "modern", size: "xl" }), "group")}
-            >
-              Get Started
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link 
-              to="/services" 
-              className={cn(buttonVariants({ variant: "outline", size: "xl" }))}
-            >
-              Explore Services
-            </Link>
-          </div>
         </div>
 
-        {/* Feature Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 md:mt-24 animate-fade-up" style={{ animationDelay: '600ms' }}>
-          {[
-            {
-              title: "GST Filing",
-              description: "Accurate and timely GST return filing to ensure compliance with Indian tax regulations."
-            },
-            {
-              title: "Financial Analysis",
-              description: "In-depth business performance analysis to drive informed decision-making and growth."
-            },
-            {
-              title: "Tax Planning",
-              description: "Strategic tax planning to help you minimize liabilities and maximize savings."
-            }
-          ].map((feature, index) => (
-            <div 
-              key={index} 
-              className="bg-white/50 backdrop-blur-sm border border-border rounded-xl p-6 hover-lift"
-              style={{ animationDelay: `${600 + (index * 150)}ms` }}
-            >
-              <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
+        {/* Two Column Layout */}
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Left: Services List */}
+          <div className="space-y-6 animate-fade-up" style={{ animationDelay: '150ms' }}>
+  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
+    Our Services
+  </h2>
+
+  {/* ✅ One single card container */}
+  <div className="p-6 rounded-xl bg-card border border-border shadow-sm hover:shadow-md transition-all duration-300">
+    {/* 🔹 Flex layout for side-by-side display */}
+    <div className="flex flex-wrap gap-6">
+      {services.map((service, index) => {
+        const Icon = service.icon;
+        return (
+          <div
+            key={index}
+            className="flex items-center gap-3 p-4 rounded-lg bg-muted/50 hover:bg-muted transition w-fit"
+          >
+            <div className="flex-shrink-0 w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
+              <Icon className="w-5 h-5 text-primary" />
             </div>
-          ))}
+            <h3 className="font-semibold text-lg text-foreground">
+              {service.name}
+            </h3>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</div>
+
+
+          {/* Right: Contact Form */}
+          <div className="animate-fade-up" style={{ animationDelay: '300ms' }}>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                Get In Touch
+              </h2>
+            <div className="bg-card border border-border rounded-2xl shadow-xl p-6 md:p-8 sticky top-24">
+              <p className="text-muted-foreground mb-6">
+                Fill out the form below and we'll get back to you shortly
+              </p>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                    <User className="inline w-4 h-4 mr-2" />
+                    Name
+                  </label>
+                  <Input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your full name"
+                    className="w-full"
+                  />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                    <Mail className="inline w-4 h-4 mr-2" />
+                    Email
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="your@email.com"
+                    className="w-full"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                    <Phone className="inline w-4 h-4 mr-2" />
+                    Phone Number
+                  </label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    required
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Your phone number"
+                    className="w-full"
+                  />
+                </div>
+                </div>
+                
+                <div>
+                <label htmlFor="service" className="block text-sm font-medium mb-1">
+                  Service Required
+                </label>
+                <select
+                  id="service"
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  className="w-full px-4 py-2 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
+                >
+                  <option value="">Select a service</option>
+                  <option value="gst-filing">GST Filing</option>
+                  <option value="income-tax">Income Tax Filing</option>
+                  <option value="bookkeeping">Bookkeeping</option>
+                  <option value="financial-analysis">Financial Analysis</option>
+                  <option value="billing">Billing & Invoicing</option>
+                  <option value="consultation">Tax Consultation</option>
+                </select>
+              </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                    <MessageSquare className="inline w-4 h-4 mr-2" />
+                    Message
+                  </label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    required
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell us about your requirements..."
+                    rows={4}
+                    className="w-full"
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full"
+                  size="lg"
+                >
+                  {isSubmitting ? 'Sending...' : 'Submit'}
+                </Button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </section>

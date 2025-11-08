@@ -1,47 +1,64 @@
-
-import { toast } from 'sonner';
-
-export interface ContactFormData {
+// src/lib/api.ts
+export async function submitContactForm(data: {
   name: string;
   email: string;
   phone: string;
   service: string;
   message: string;
-}
+}) {
+  // In dev use the Vite proxy path so the browser doesn't hit cross-origin directly.
+  // In production use the real endpoint from env.
+  const devProxy = '/api/contact';
+  const appsScriptUrl = import.meta.env.VITE_APPS_SCRIPT_URL;
+  const endpoint = import.meta.env.DEV ? devProxy : appsScriptUrl;
+  const secret = import.meta.env.VITE_CONTACT_SECRET ?? import.meta.env.VITE_SECRET ?? '';
 
-export const submitContactForm = async (formData: ContactFormData): Promise<void> => {
+  if (!endpoint) {
+    console.error('submitContactForm: endpoint is not configured (VITE_APPS_SCRIPT_URL missing).');
+    throw new Error('Form endpoint not configured');
+  }
+
+  const payload = {
+    name: data.name || '',
+    email: data.email || '',
+    phone: data.phone || '',
+    service: data.service || '',
+    message: data.message || '',
+    secret,
+    hp: '' // honeypot (anti-spam) field
+  };
+
   try {
-    const response = await fetch("http://localhost:5000/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+    // Helpful debug in development
+    if (import.meta.env.DEV) {
+      // eslint-disable-next-line no-console
+      console.debug('[submitContactForm] DEV mode -> using proxy:', endpoint, 'payload:', payload);
+    } else {
+      // eslint-disable-next-line no-console
+      console.debug('[submitContactForm] PROD -> using endpoint from env');
+    }
+
+    const resp = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
     });
 
-    if (!response.ok) throw new Error("Failed to submit form");
+    const text = await resp.text();
 
-    toast.success("Message sent successfully!");
-  } catch (error) {
-    toast.error("Failed to send message. Please try again.");
+    if (!resp.ok) {
+      console.error('Form submission failed:', resp.status, text);
+      throw new Error(`Form submission failed: ${resp.status}`);
+    }
+
+    // Try to parse JSON, otherwise return raw text
+    try {
+      return JSON.parse(text);
+    } catch {
+      return text;
+    }
+  } catch (err) {
+    console.error('submitContactForm error', err);
+    throw err;
   }
-};
-
-// This function would typically be called from your actual backend API
-export const sendAdminEmail = (formData: ContactFormData) => {
-  // In a real implementation, this would use a service like Nodemailer, SendGrid, etc.
-  // to send an email to the admin with the form data.
-  
-  console.log('Sending email to admin with form data:', formData);
-  // Example implementation:
-  // return sendgrid.send({
-  //   to: 'admin@accountpro.com',
-  //   from: 'noreply@accountpro.com',
-  //   subject: `New Inquiry from ${formData.name}`,
-  //   text: `
-  //     Name: ${formData.name}
-  //     Email: ${formData.email}
-  //     Phone: ${formData.phone}
-  //     Service: ${formData.service}
-  //     Message: ${formData.message}
-  //   `,
-  // });
-};
+}

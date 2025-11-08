@@ -15,66 +15,87 @@ interface PricingItem {
 const pricingData: PricingItem[] = [
   {
     id: 'gst-filing',
-    title: 'GST Filing & Compliance',
-    price: '₹1,500 - ₹3,000',
-    description: 'Per filing, based on transaction volume',
+    title: 'Comprehensive Package',
+    price: '8000 Onwards',
+    description: 'Per Month',
     features: [
-      'Monthly/Quarterly filing',
-      'GSTR reconciliation',
-      'E-way bill generation',
-      'GST notice handling'
+      'Daily Accounting',
+      'Invoice Making with E-Way Bill',
+      'Monthly GSTR Filling',
+      'TDS Filling',
+      'Annual Income TAX (ITR) Filling',
+      'Audit Report',
+      'CMA (1 Free)',
+      'Provisonal (1 Free)',
+      'Stock Certificate (1 Free)'
+      
     ],
     info: 'Price varies based on the number of transactions and complexity of business operations.'
   },
   {
     id: 'itr-filing',
-    title: 'Income Tax Return (ITR) Filing',
-    price: '₹1,000 - ₹2,500',
-    description: 'Per return, based on complexity',
+    title: 'Advanced Package',
+    price: '6,000 Onwards',
+    description: 'Per Month',
     features: [
-      'Personal tax returns',
-      'Business tax returns',
-      'Capital gains calculation',
-      'Tax planning advice'
+      'Daily Accounting',
+      'Invoice Making with E-Way Bill',
+      'Monthly GSTR Filling',
+      'Annual Income TAX (ITR) Filling',
+      'Audit Report'
     ],
     info: 'Price depends on income sources, investments, and filing category.'
   },
   {
     id: 'billing',
-    title: 'Billing & Invoicing',
-    price: '₹500 - ₹1,500',
-    description: 'Per month, based on volume',
+    title: 'Standard Package',
+    price: '5000 0nwards',
+    description: 'Per month',
     features: [
-      'Invoice generation',
-      'Payment tracking',
-      'Client management',
-      'Digital delivery'
+      'Daily Accounting',
+      'Monthly GSTR Filling',
+      'Annual Income TAX (ITR) Filling',
+      'Audit Report'
     ],
     info: 'Price depends on number of invoices and complexity of billing requirements.'
   },
   {
-    id: 'bookkeeping',
-    title: 'Bookkeeping Services',
-    price: '₹3,000 - ₹5,000',
-    description: 'Per month, comprehensive service',
+    id: 'Basic Package',
+    title: 'Basic Package',
+    price: '3500 Onwards',
+    description: 'Per month',
     features: [
-      'Daily transaction recording',
-      'Bank reconciliation',
-      'Financial statements',
-      'Expense categorization'
+      'Daily Accounting'
     ],
     info: 'Price varies according to transaction volume and reporting requirements.'
   },
   {
     id: 'consultation',
-    title: 'Financial Analysis & Consultation',
-    price: '₹2,000 - ₹4,000',
+    title: 'GST Package',
+    price: '750 Onwards',
+    description: 'Per month',
+    features: [
+      'Monthly GST Filling'
+    ],
+    info: 'Price depends on scope of analysis and consultation duration.'
+  },
+  {
+    id: 'consultation',
+    title: 'CMA & Provisional Package',
+    price: '2000 Onwards',
     description: 'Per session',
     features: [
-      'Business performance review',
-      'Cash flow management',
-      'Profitability analysis',
-      'Growth strategy planning'
+      '5 Years CMA & Provisional'
+    ],
+    info: 'Price depends on scope of analysis and consultation duration.'
+  },
+  {
+    id: 'consultation',
+    title: 'Project Report',
+    price: '2000 Onwards',
+    description: 'Per session',
+    features: [
+      'Project Report'
     ],
     info: 'Price depends on scope of analysis and consultation duration.'
   }
@@ -82,7 +103,7 @@ const pricingData: PricingItem[] = [
 
 const PricingSection = () => {
   return (
-    <section className="py-16 md:py-24 bg-muted-foreground/5">
+    
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-up">
           <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
@@ -153,7 +174,7 @@ const PricingSection = () => {
           </div>
         </div>
       </div>
-    </section>
+    
   );
 };
 
