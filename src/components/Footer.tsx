@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <Link to="/" className="inline-block mb-4">
-              <span className="text-2xl font-bold text-primary">Accountin</span>
+              <span className="text-2xl font-bold text-primary">Accountinger</span>
             </Link>
             <p className="text-muted-foreground mb-4">
               Comprehensive accounting and tax solutions for Indian businesses and individuals.
@@ -98,7 +98,7 @@ const Footer = () => {
         </div>
         
         <div className="pt-8 border-t border-border text-center text-muted-foreground text-sm">
-          <p>&copy; {currentYear} AccountPro. All rights reserved.</p>
+          <p>&copy; {currentYear} Accountinger. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -6,7 +6,7 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 const AboutPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "About Us - AccountPro";
+    document.title = "About Us - Accountinger";
   }, []);
 
   return (
@@ -14,13 +14,13 @@ const AboutPage = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto mb-16 text-center animate-fade-up">
           <div className="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            About AccountPro
+            About Accountinger
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Your Trusted Accounting Partner
           </h1>
           <p className="text-xl text-muted-foreground">
-            Learn more about our mission, values, and the team behind AccountPro's premium accounting services.
+            Learn more about our mission, values, and the team behind Accountinger's premium accounting services.
           </p>
         </div>
       </div>
@@ -31,7 +31,7 @@ const AboutPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Why Choose AccountPro?
+              Why Choose Accountinger?
             </h2>
             <p className="text-muted-foreground">
               We combine expertise with personalized service to deliver accounting solutions that meet your unique business needs.

@@ -6,7 +6,7 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 const ContactPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Contact Us - AccountPro";
+    document.title = "Contact Us - Accountinger";
   }, []);
 
   return (
@@ -27,7 +27,7 @@ const ContactPage = () => {
       
       <Contact />
       
-      <section className="py-16 bg-white">
+      {/* <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-up">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -40,7 +40,7 @@ const ContactPage = () => {
           
           <div className="rounded-xl overflow-hidden shadow-lg border border-border h-96 animate-fade-up" style={{ animationDelay: '150ms' }}>
             {/* This would be replaced with an actual Google Maps embed */}
-            <div className="w-full h-full bg-muted/50 flex items-center justify-center">
+            {/* <div className="w-full h-full bg-muted/50 flex items-center justify-center">
               <iframe
                   title="Google Map"
     src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d906.9847300912452!2d80.82030913280825!3d24.59130407194786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1762433441719!5m2!1sen!2sin"
@@ -54,8 +54,8 @@ const ContactPage = () => {
             </div>
           </div>
         </div>
-      </section>
-      
+      </section> 
+       */}
       <WhatsAppButton />
     </main>
   );

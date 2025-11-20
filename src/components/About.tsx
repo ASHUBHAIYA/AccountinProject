@@ -20,7 +20,7 @@ const About = ({ isFullPage = false }: { isFullPage?: boolean }) => {
               Expert Accounting Solutions for Indian Businesses
             </h2>
             <p className="text-muted-foreground mb-6">
-              At AccountPro, we provide comprehensive accounting and financial services tailored to meet the unique needs of businesses across India. With a focus on accuracy, compliance, and strategic financial management, we help businesses navigate the complexities of Indian taxation and accounting.
+              At Accountinger, we provide comprehensive accounting and financial services tailored to meet the unique needs of businesses across India. With a focus on accuracy, compliance, and strategic financial management, we help businesses navigate the complexities of Indian taxation and accounting.
             </p>
             <p className="text-muted-foreground mb-6">
               Our team of experienced professionals stays updated with the latest changes in tax laws and regulations to ensure your business remains compliant while optimizing financial performance.

@@ -10,7 +10,7 @@ import PricingSection from '@/components/PricingSection';
 const ServicesPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Our Services - AccountPro";
+    document.title = "Our Services - Accountinger";
   }, []);
 
   return (

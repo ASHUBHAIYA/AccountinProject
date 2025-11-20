@@ -6,15 +6,15 @@ export async function submitContactForm(data: {
   service: string;
   message: string;
 }) {
-  // In dev use the Vite proxy path so the browser doesn't hit cross-origin directly.
-  // In production use the real endpoint from env.
   const devProxy = '/api/contact';
   const appsScriptUrl = import.meta.env.VITE_APPS_SCRIPT_URL;
   const endpoint = import.meta.env.DEV ? devProxy : appsScriptUrl;
   const secret = import.meta.env.VITE_CONTACT_SECRET ?? import.meta.env.VITE_SECRET ?? '';
 
   if (!endpoint) {
-    console.error('submitContactForm: endpoint is not configured (VITE_APPS_SCRIPT_URL missing).');
+    console.error(
+      'submitContactForm: endpoint is not configured (VITE_APPS_SCRIPT_URL missing).'
+    );
     throw new Error('Form endpoint not configured');
   }
 
@@ -29,33 +29,62 @@ export async function submitContactForm(data: {
   };
 
   try {
-    // Helpful debug in development
     if (import.meta.env.DEV) {
+      // DEV: keep existing behaviour (JSON -> Vite proxy)
       // eslint-disable-next-line no-console
-      console.debug('[submitContactForm] DEV mode -> using proxy:', endpoint, 'payload:', payload);
+      console.debug(
+        '[submitContactForm] DEV mode -> using proxy:',
+        endpoint,
+        'payload:',
+        payload
+      );
+
+      const resp = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const text = await resp.text();
+
+      if (!resp.ok) {
+        console.error('Form submission failed (DEV):', resp.status, text);
+        throw new Error(`Form submission failed: ${resp.status}`);
+      }
+
+      try {
+        return JSON.parse(text);
+      } catch {
+        return text;
+      }
     } else {
+      // PROD: Avoid CORS preflight by sending URL-encoded form data
+      // No custom headers -> browser uses application/x-www-form-urlencoded (simple request)
       // eslint-disable-next-line no-console
-      console.debug('[submitContactForm] PROD -> using endpoint from env');
-    }
+      console.debug('[submitContactForm] PROD -> using Apps Script endpoint');
 
-    const resp = await fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+      const formData = new URLSearchParams();
+      Object.entries(payload).forEach(([key, value]) => {
+        formData.append(key, value ?? '');
+      });
 
-    const text = await resp.text();
+      const resp = await fetch(endpoint, {
+        method: 'POST',
+        body: formData
+      });
 
-    if (!resp.ok) {
-      console.error('Form submission failed:', resp.status, text);
-      throw new Error(`Form submission failed: ${resp.status}`);
-    }
+      const text = await resp.text();
 
-    // Try to parse JSON, otherwise return raw text
-    try {
-      return JSON.parse(text);
-    } catch {
-      return text;
+      if (!resp.ok) {
+        console.error('Form submission failed (PROD):', resp.status, text);
+        throw new Error(`Form submission failed: ${resp.status}`);
+      }
+
+      try {
+        return JSON.parse(text);
+      } catch {
+        return text;
+      }
     }
   } catch (err) {
     console.error('submitContactForm error', err);
