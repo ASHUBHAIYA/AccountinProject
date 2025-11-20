@@ -20,7 +20,7 @@ const WhatsAppButton = () => {
     setIsOpen(!isOpen);
   };
 
-  const phoneNumber = "+917678509300"; // Replace with actual WhatsApp number
+  const phoneNumber = "+919407882260"; // Replace with actual WhatsApp number
   const message = "Hello, I'm interested in your accounting services. Can you provide more information?";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 

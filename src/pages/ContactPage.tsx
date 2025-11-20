@@ -34,7 +34,7 @@ const ContactPage = () => {
               Our Location
             </h2>
             <p className="text-muted-foreground">
-              Visit our office in Mumbai's Financial District
+              Visit our office in Satna
             </p>
           </div>
           

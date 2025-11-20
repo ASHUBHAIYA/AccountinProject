@@ -123,12 +123,12 @@ const Contact: React.FC = () => {
                 {
                   icon: Phone,
                   title: 'Call Us',
-                  details: '+91 7678509300'
+                  details: '+91 9407882260'
                 },
                 {
                   icon: Mail,
                   title: 'Email Us',
-                  details: 'info@accountin.com'
+                  details: 'info@accountinger.in'
                 }
               ].map((item, index) => (
                 <div key={index} className="flex items-start gap-4" style={{ animationDelay: `${150 + index * 100}ms` }}>
