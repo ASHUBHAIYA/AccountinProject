@@ -3,10 +3,10 @@ services:
   accounting-app:
     build:
       context: .
-      dockerfile: DockerFile
+      dockerfile: Dockerfile
     container_name: accounting-app
     ports:
-      - "3000:3000"
+      - "80:5000"     # map port 80 → app runs on port 5000
     restart: unless-stopped
     env_file:
       - .env

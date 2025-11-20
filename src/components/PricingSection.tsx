@@ -16,7 +16,7 @@ const pricingData: PricingItem[] = [
   {
     id: 'gst-filing',
     title: 'Comprehensive Package',
-    price: '8000 Onwards',
+    price: '8,000 Onwards',
     description: 'Per Month',
     features: [
       'Daily Accounting',
@@ -49,7 +49,7 @@ const pricingData: PricingItem[] = [
   {
     id: 'billing',
     title: 'Standard Package',
-    price: '5000 0nwards',
+    price: '5,000 0nwards',
     description: 'Per month',
     features: [
       'Daily Accounting',

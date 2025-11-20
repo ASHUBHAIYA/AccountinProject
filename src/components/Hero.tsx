@@ -70,8 +70,7 @@ const Hero = () => {
             Smart Accounts
           </h1>
           <p className="text-xl text-muted-foreground">
-            Your trusted partner for accounting, GST & taxation services <br></br>
-            Your Team Working Remotely for you
+            Accounting, GST Filing & ITR for Small Businesses in India — CA-led, Secure, and Affordable.
             
           </p>
         </div>

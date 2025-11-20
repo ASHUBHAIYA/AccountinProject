@@ -51,7 +51,7 @@ const WhatsAppButton = () => {
         </div>
         <div className="p-4">
           <p className="text-sm text-muted-foreground mb-4">
-            Hello! 👋 How can we help you with your accounting needs? Chat with us on WhatsApp for quick assistance.
+            Hello! 👋 How can we help you with your accounting and CA needs? Chat with us on WhatsApp for quick assistance.
           </p>
           <a 
             href={whatsappUrl} 
