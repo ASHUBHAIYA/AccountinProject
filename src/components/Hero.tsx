@@ -19,16 +19,14 @@ const Hero = () => {
   });
   
   const services = [
-    { icon: FileText, name: 'GST Filing', description: 'Accurate and timely GST return filing' },
-    { icon: Receipt, name: 'Billing & Invoicing', description: 'Professional billing solutions' },
-    { icon: Calculator, name: 'Income Tax Return', description: 'Expert ITR filing services' },
-    { icon: Building2, name: 'Company Registration', description: 'Complete registration support' },
-    { icon: BookOpen, name: 'Bookkeeping', description: 'Comprehensive bookkeeping services' },
-    { icon: FileCheck, name: 'TDS Filing', description: 'Timely TDS compliance' },
-    { icon: CreditCard, name: 'PAN/TAN Application', description: 'Quick PAN/TAN processing' },
-    { icon: CreditCard, name: '', description: '' },
+    { icon: FileText, name: 'GST Filing & Returns', description: 'Monthly/Quarterly GST compliance made simple', price: '₹499/month' },
+    { icon: Receipt, name: 'Billing & Invoicing', description: 'GST-compliant invoicing software & solutions', price: '₹299/month' },
+    { icon: Calculator, name: 'Income Tax Return Filing', description: 'Individual & Business ITR filing', price: '₹999 onwards' },
+    { icon: Building2, name: 'Company Registration', description: 'Pvt Ltd, LLP, OPC registration in 7-10 days', price: '₹9,999 onwards' },
+    { icon: BookOpen, name: 'Bookkeeping Services', description: 'Complete books of accounts maintained monthly', price: '₹1,999/month' },
+    { icon: FileCheck, name: 'TDS Return Filing', description: 'Quarterly TDS returns & Form 16/16A', price: '₹799/quarter' },
+    { icon: CreditCard, name: 'PAN/TAN Application', description: 'New PAN, correction & TAN services', price: '₹199 onwards' },
   ];
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({
       ...prev,
@@ -65,48 +63,94 @@ const Hero = () => {
     <section className="relative pt-24 pb-16 md:pb-24 bg-gradient-to-br from-background via-primary/5 to-background">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12 animate-fade-up">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Smart Accounts
+        <div className="text-center mb-8 animate-fade-up">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
+            <span className="text-sm font-medium text-primary">⚡ GST Practitioner Certified</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight">
+            India's Most Trusted<br />
+            <span className="text-primary">Accounting & Tax Services</span>
           </h1>
-          <p className="text-xl text-muted-foreground">
-            Accounting, GST Filing & ITR for Small Businesses in India — CA-led, Secure, and Affordable.
-            
+          <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto">
+            Expert GST filing, Income Tax returns & complete accounting solutions for Indian businesses
           </p>
+          
+          {/* Trust Badges */}
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground mb-8">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-green-500"></div>
+              <span className="font-medium">500+ Happy Clients</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-green-500"></div>
+              <span className="font-medium">8+ Years Experience</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-green-500"></div>
+              <span className="font-medium">10+ Industries Served</span>
+            </div>
+          </div>
         </div>
 
         {/* Two Column Layout */}
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left: Services List */}
           <div className="space-y-6 animate-fade-up" style={{ animationDelay: '150ms' }}>
-  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-    Our Services
-  </h2>
-
-  {/* ✅ One single card container */}
-  <div className="p-6 rounded-xl bg-card border border-border shadow-sm hover:shadow-md transition-all duration-300">
-    {/* 🔹 Flex layout for side-by-side display */}
-    <div className="flex flex-wrap gap-6">
-      {services.map((service, index) => {
-        const Icon = service.icon;
-        return (
-          <div
-            key={index}
-            className="flex items-center gap-3 p-4 rounded-lg bg-muted/50 hover:bg-muted transition w-fit"
-          >
-            <div className="flex-shrink-0 w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
-              <Icon className="w-5 h-5 text-primary" />
+            <div className="mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+                Our Professional Services
+              </h2>
+              
             </div>
-            <h3 className="font-semibold text-lg text-foreground">
-              {service.name}
-            </h3>
+            <div className="space-y-3">
+              {services.map((service, index) => {
+                const Icon = service.icon;
+                return (
+                  <div
+                    key={index}
+                    className="group flex items-start gap-4 p-5 rounded-xl bg-card border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                  >
+                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary group-hover:text-white flex items-center justify-center transition-colors">
+                      <Icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-start justify-between gap-2 mb-1">
+                        <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">
+                          {service.name}
+                        </h3>
+                        <span className="text-primary font-bold text-sm whitespace-nowrap">
+                          {service.price}
+                        </span>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 pt-4">
+              <a
+                href="https://wa.me/919407882260?text=Hi,%20I%20want%20a%20free%20consultation%20about%20your%20services"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#1fb956] text-white font-semibold rounded-lg transition-all hover:scale-105"
+              >
+                <MessageSquare className="w-5 h-5" />
+                WhatsApp Us Now
+              </a>
+              <a
+                href="tel:+919407882260"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all hover:scale-105"
+              >
+                <Phone className="w-5 h-5" />
+                Call Now
+              </a>
+            </div>
           </div>
-        );
-      })}
-    </div>
-  </div>
-</div>
-
 
           {/* Right: Contact Form */}
           <div className="animate-fade-up" style={{ animationDelay: '300ms' }}>
