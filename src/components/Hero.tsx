@@ -21,7 +21,7 @@ const Hero = () => {
   
   const services = [
     { icon: FileText, name: 'GST Filing & Returns', description: 'Monthly/Quarterly GST compliance made simple', price: '₹699 onwards' },
-    { icon: Receipt, name: 'Billing & Invoicing', description: 'GST-compliant invoicing software & solutions', price: '₹1,,999 onwards' },
+    { icon: Receipt, name: 'Billing & Invoicing', description: 'GST-compliant invoicing software & solutions', price: '₹1,999 onwards' },
     { icon: Calculator, name: 'Income Tax Return Filing', description: 'Individual & Business ITR filing', price: '₹499 onwards' },
     { icon: Building2, name: 'Company Registration', description: 'Pvt Ltd, LLP, OPC registration in 7-10 days', price: '₹9,999 onwards' },
     { icon: BookOpen, name: 'Bookkeeping Services', description: 'Complete books of accounts maintained monthly', price: '₹3,999 onwards' },
