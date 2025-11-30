@@ -16,7 +16,7 @@ const pricingData: PricingItem[] = [
   {
     id: 'gst-filing',
     title: 'Comprehensive Package',
-    price: '8,000 Onwards',
+    price: '7,499 Onwards',
     description: 'Per Month',
     features: [
       'Daily Accounting',
@@ -30,12 +30,12 @@ const pricingData: PricingItem[] = [
       'Stock Certificate (1 Free)'
       
     ],
-    info: 'Price varies based on the number of transactions and complexity of business operations.'
+    
   },
   {
     id: 'itr-filing',
     title: 'Advanced Package',
-    price: '6,000 Onwards',
+    price: '5,999 Onwards',
     description: 'Per Month',
     features: [
       'Daily Accounting',
@@ -44,12 +44,12 @@ const pricingData: PricingItem[] = [
       'Annual Income TAX (ITR) Filling',
       'Audit Report'
     ],
-    info: 'Price depends on income sources, investments, and filing category.'
+    
   },
   {
     id: 'billing',
     title: 'Standard Package',
-    price: '5,000 0nwards',
+    price: '5,999 Onwards',
     description: 'Per month',
     features: [
       'Daily Accounting',
@@ -57,47 +57,37 @@ const pricingData: PricingItem[] = [
       'Annual Income TAX (ITR) Filling',
       'Audit Report'
     ],
-    info: 'Price depends on number of invoices and complexity of billing requirements.'
+    
   },
   {
     id: 'Basic Package',
     title: 'Basic Package',
-    price: '3500 Onwards',
+    price: '3,999 Onwards',
     description: 'Per month',
     features: [
       'Daily Accounting'
     ],
-    info: 'Price varies according to transaction volume and reporting requirements.'
+    
   },
   {
     id: 'consultation',
     title: 'GST Package',
-    price: '750 Onwards',
+    price: '699 Onwards',
     description: 'Per month',
     features: [
       'Monthly GST Filling'
     ],
-    info: 'Price depends on scope of analysis and consultation duration.'
+    
   },
   {
     id: 'consultation',
     title: 'CMA & Provisional Package',
-    price: '2000 Onwards',
+    price: '3,499 Onwards',
     description: 'Per session',
     features: [
-      '5 Years CMA & Provisional'
+      '3 Years CMA & Provisional'
     ],
-    info: 'Price depends on scope of analysis and consultation duration.'
-  },
-  {
-    id: 'consultation',
-    title: 'Project Report',
-    price: '2000 Onwards',
-    description: 'Per session',
-    features: [
-      'Project Report'
-    ],
-    info: 'Price depends on scope of analysis and consultation duration.'
+    
   }
 ];
 
