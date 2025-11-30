@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { FileText, Calculator, FileCheck, Building2, BookOpen, Receipt, CreditCard, Phone, Mail, User, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { IdCard, FileBarChart, ClipboardList } from "lucide-react";
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { submitContactForm } from '@/lib/api';
@@ -25,9 +26,9 @@ const Hero = () => {
     { icon: Building2, name: 'Company Registration', description: 'Pvt Ltd, LLP, OPC registration in 7-10 days', price: '₹9,999 onwards' },
     { icon: BookOpen, name: 'Bookkeeping Services', description: 'Complete books of accounts maintained monthly', price: '₹3,999 onwards' },
     { icon: FileCheck, name: 'TDS Return Filing', description: 'Quarterly TDS returns & Form 16/16A', price: '₹799 onwards' },
-    { icon: CreditCard, name: 'PAN Application', description: 'New PAN', price: '₹499 onwards' },
-    { icon: CreditCard, name: 'CMA Report', description: 'CMA Report', price: '₹1,499 onwards' },
-    { icon: CreditCard, name: 'Project Report & Provisional', description: 'Project Report & Provisional', price: '₹1,999 onwards' },
+    { icon: IdCard, name: 'PAN Application', description: 'New PAN', price: '₹499 onwards' },
+    { icon: FileBarChart, name: 'CMA Report', description: 'CMA Report', price: '₹1,499 onwards' },
+    { icon: ClipboardList, name: 'Project Report & Provisional', description: 'Project Report & Provisional', price: '₹1,999 onwards' },
   ];
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({
