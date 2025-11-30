@@ -78,16 +78,6 @@ const pricingData: PricingItem[] = [
       'Monthly GST Filling'
     ],
     
-  },
-  {
-    id: 'consultation',
-    title: 'CMA & Provisional Package',
-    price: '3,499 Onwards',
-    description: 'Per session',
-    features: [
-      '3 Years CMA & Provisional'
-    ],
-    
   }
 ];
 
