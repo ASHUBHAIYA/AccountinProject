@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 const Index = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "GST Filing Services in India | Income Tax Return & Accounting for Small Businesses";
+    document.title = "Professional Accounting & Bookkeeping Services in India | Accountinger";
 ;
     
     // Add meta description for SEO
