@@ -55,9 +55,7 @@ const Contact: React.FC = () => {
     if (!formData.service) newErrors.service = 'Please select a service.';
 
     // message
-    if (!formData.message.trim()) newErrors.message = 'Message is required.';
-    else if (formData.message.trim().length < 10) newErrors.message = 'Message must be at least 10 characters.';
-
+    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };

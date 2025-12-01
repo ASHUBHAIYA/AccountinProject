@@ -44,7 +44,7 @@ const Hero = () => {
     try {
       await submitContactForm({
         ...formData,
-        service: 'General Inquiry'
+        service: formData.service,
       });
       toast({
         title: "Message sent!",
