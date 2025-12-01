@@ -197,9 +197,9 @@ const Contact: React.FC = () => {
                   )}
                 >
                   <option value="">Select a service</option>
+                  <option value="bookkeeping">Daily Accounting</option>
                   <option value="gst-filing">GST Filing</option>
                   <option value="income-tax">Income Tax Filing</option>
-                  <option value="bookkeeping">Bookkeeping</option>
                   <option value="financial-analysis">Financial Analysis</option>
                   <option value="billing">Billing &amp; Invoicing</option>
                   <option value="consultation">Tax Consultation</option>
@@ -217,8 +217,7 @@ const Contact: React.FC = () => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  required
-                  maxLength={500}
+                  maxLength={100}
                   className={cn(
                     'w-full px-4 py-2 rounded-md border bg-background focus:outline-none focus:ring-2 transition-all resize-none',
                     errors.message ? 'border-red-400 focus:ring-red-200' : 'border-input focus:ring-primary/30'

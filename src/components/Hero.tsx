@@ -209,9 +209,9 @@ const Hero = () => {
                   className="w-full px-4 py-2 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
                 >
                   <option value="">Select a service</option>
+                  <option value="bookkeeping">Daily Accounting</option>
                   <option value="gst-filing">GST Filing</option>
                   <option value="income-tax">Income Tax Filing</option>
-                  <option value="bookkeeping">Bookkeeping</option>
                   <option value="financial-analysis">Financial Analysis</option>
                   <option value="billing">Billing & Invoicing</option>
                   <option value="consultation">Tax Consultation</option>
@@ -225,7 +225,6 @@ const Hero = () => {
                   <Textarea
                     id="message"
                     name="message"
-                    required
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Tell us about your requirements..."
