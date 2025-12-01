@@ -181,23 +181,7 @@ const Hero = () => {
                     className="w-full"
                   />
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    <Mail className="inline w-4 h-4 mr-2" />
-                    Email
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="your@email.com"
-                    className="w-full"
-                  />
-                </div>
+                
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
                     <Phone className="inline w-4 h-4 mr-2" />
@@ -213,7 +197,6 @@ const Hero = () => {
                     placeholder="Your phone number"
                     className="w-full"
                   />
-                </div>
                 </div>
                 
                 <div>

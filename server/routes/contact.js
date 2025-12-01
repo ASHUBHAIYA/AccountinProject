@@ -1,14 +1,14 @@
 // routes/contact.js
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 
-router.post('/', async (req, res) => {
-  const { name, email, phone, service, message } = req.body;
+router.post("/", async (req, res) => {
+  const { name, phone, service, message } = req.body;
 
   // Create a transporter
   const transporter = nodemailer.createTransport({
-    service: 'Gmail',
+    service: "Gmail",
     auth: {
       user: process.env.EMAIL_USER, // Your Gmail address
       pass: process.env.EMAIL_PASS, // App Password or Gmail password
@@ -24,10 +24,12 @@ router.post('/', async (req, res) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    res.status(200).json({ success: true, message: 'Message sent successfully!' });
+    res
+      .status(200)
+      .json({ success: true, message: "Message sent successfully!" });
   } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).json({ success: false, message: 'Error sending message.' });
+    console.error("Error sending email:", error);
+    res.status(500).json({ success: false, message: "Error sending message." });
   }
 });
 

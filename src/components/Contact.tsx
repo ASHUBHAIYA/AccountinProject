@@ -7,7 +7,6 @@ import { submitContactForm } from '@/lib/api';
 
 type FormData = {
   name: string;
-  email: string;
   phone: string;
   service: string;
   message: string;
@@ -15,7 +14,6 @@ type FormData = {
 
 const initialForm: FormData = {
   name: '',
-  email: '',
   phone: '',
   service: '',
   message: ''
@@ -34,7 +32,6 @@ const Contact: React.FC = () => {
     // enforce maxlength client-side for safety too
     let trimmed = value;
     if (name === 'name') trimmed = value.slice(0, 50);
-    if (name === 'email') trimmed = value.slice(0, 80);
     if (name === 'phone') trimmed = value.slice(0, 10).replace(/\D/g, ''); // keep digits only, max 10
     if (name === 'message') trimmed = value.slice(0, 500);
     setFormData(prev => ({ ...prev, [name]: trimmed }));
@@ -48,10 +45,7 @@ const Contact: React.FC = () => {
     if (!formData.name.trim()) newErrors.name = 'Full name is required.';
     else if (formData.name.trim().length < 2) newErrors.name = 'Enter at least 2 characters for name.';
 
-    // email
-    if (!formData.email.trim()) newErrors.email = 'Email is required.';
-    else if (!emailRegex.test(formData.email.trim())) newErrors.email = 'Enter a valid email address.';
-
+   
     // phone
     const phoneOnly = formData.phone.replace(/\s+/g, '');
     if (!phoneOnly) newErrors.phone = 'Phone number is required.';
@@ -167,27 +161,7 @@ const Contact: React.FC = () => {
                 {errors.name && <p className="text-sm mt-1 text-red-500">{errors.name}</p>}
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-1">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    maxLength={80}
-                    className={cn(
-                      'w-full px-4 py-2 rounded-md border bg-background focus:outline-none focus:ring-2 transition-all',
-                      errors.email ? 'border-red-400 focus:ring-red-200' : 'border-input focus:ring-primary/30'
-                    )}
-                    placeholder="Your email"
-                  />
-                  {errors.email && <p className="text-sm mt-1 text-red-500">{errors.email}</p>}
-                </div>
+              
 
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium mb-1">
@@ -211,7 +185,6 @@ const Contact: React.FC = () => {
                   />
                   {errors.phone && <p className="text-sm mt-1 text-red-500">{errors.phone}</p>}
                 </div>
-              </div>
 
               <div>
                 <label htmlFor="service" className="block text-sm font-medium mb-1">
