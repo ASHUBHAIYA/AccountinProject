@@ -110,11 +110,6 @@ const Contact: React.FC = () => {
             <div className="space-y-6">
               {[
                 {
-                  icon: MapPin,
-                  title: 'Our Location',
-                  details: 'Bagha, Satna, Madhya Pradesh 485001'
-                },
-                {
                   icon: Phone,
                   title: 'Call Us',
                   details: '+91 9407882260'

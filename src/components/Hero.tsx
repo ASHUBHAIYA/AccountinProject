@@ -63,23 +63,21 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative pt-24 pb-16 md:pb-24 bg-gradient-to-br from-background via-primary/5 to-background">
+    <section className="relative pt-16 pb-16 md:pb-24 bg-gradient-to-br from-background via-primary/5 to-background">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-8 animate-fade-up">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
-            <span className="text-sm font-medium text-primary">⚡ GST Practitioner Certified</span>
-          </div>
+          
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight">
             India's Most Trusted<br />
             <span className="text-primary">Accounting & Tax Services</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-6 max-w-3xl mx-auto">
-            Expert GST filing, Income Tax returns & complete accounting solutions for Indian businesses
+            Daily Accounting, GST filing, Income Tax returns & complete accounting solutions for Indian businesses
           </p>
           
           {/* Trust Badges */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground mb-8">
+          {/* <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground mb-8">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-green-500"></div>
               <span className="font-medium">500+ Happy Clients</span>
@@ -92,7 +90,7 @@ const Hero = () => {
               <div className="w-2 h-2 rounded-full bg-green-500"></div>
               <span className="font-medium">10+ Industries Served</span>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Two Column Layout */}
@@ -103,7 +101,24 @@ const Hero = () => {
               <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
                 Our Professional Services
               </h2>
-              
+              <div className="flex flex-col sm:flex-row gap-3 pt-4">
+              <a
+                href="https://wa.me/919407882260?text=Hi,%20I%20want%20a%20free%20consultation%20about%20your%20services"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#1fb956] text-white font-semibold rounded-lg transition-all hover:scale-105"
+              >
+                <MessageSquare className="w-5 h-5" />
+                WhatsApp Us Now
+              </a>
+              <a
+                href="tel:+919407882260"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all hover:scale-105"
+              >
+                <Phone className="w-5 h-5" />
+                Call Now
+              </a>
+            </div>
             </div>
             <div className="space-y-3">
               {services.map((service, index) => {
@@ -135,24 +150,7 @@ const Hero = () => {
             </div>
             
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-4">
-              <a
-                href="https://wa.me/919407882260?text=Hi,%20I%20want%20a%20free%20consultation%20about%20your%20services"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#25D366] hover:bg-[#1fb956] text-white font-semibold rounded-lg transition-all hover:scale-105"
-              >
-                <MessageSquare className="w-5 h-5" />
-                WhatsApp Us Now
-              </a>
-              <a
-                href="tel:+919407882260"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary hover:bg-primary/90 text-white font-semibold rounded-lg transition-all hover:scale-105"
-              >
-                <Phone className="w-5 h-5" />
-                Call Now
-              </a>
-            </div>
+            
           </div>
 
           {/* Right: Contact Form */}

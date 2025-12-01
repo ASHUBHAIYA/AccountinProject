@@ -75,12 +75,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4">Contact Us</h3>
             <ul className="space-y-3">
-              <li className="flex items-start">
-                <MapPin className="h-5 w-5 text-primary mr-2 shrink-0 mt-0.5" />
-                <span className="text-muted-foreground">
-                  Bagha, Satna, Madhya Pradesh 485001
-                </span>
-              </li>
+              
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-primary mr-2 shrink-0" />
                 <a href="tel:+919407882260" className="text-muted-foreground hover:text-primary transition-colors">
