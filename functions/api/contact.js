@@ -2,43 +2,32 @@
 export async function onRequestPost(context) {
   try {
     const data = await context.request.json();
-    
-    // Log the exact payload received in your terminal
     console.log("--> Received payload:", JSON.stringify(data, null, 2));
 
-    const { name, email, phone, service, message, hp } = data;
+    const name = data.name || data.fullName || "Prospective Client";
+    const phone = data.phone || data.mobile || "Not provided";
+    const service = data.service || "General Inquiry";
+    const message = data.message || "No additional notes provided";
+    const email = data.email || ""; // optional
+    const hp = data.hp;
 
-    // Check honeypot
+    // Honeypot spam check
     if (hp) {
-      console.warn("Spam honeypot triggered");
       return new Response(JSON.stringify({ success: true }), {
         status: 200,
         headers: { "Content-Type": "application/json" }
       });
     }
 
-    // Detailed check for missing fields
-    if (!name || !email || !message) {
-      console.warn("Validation failed. Missing fields:", {
-        hasName: Boolean(name),
-        hasEmail: Boolean(email),
-        hasMessage: Boolean(message)
-      });
+    // Only require Name and Phone/Message for a consultation query
+    if (!name || (!phone && !message)) {
       return new Response(
-        JSON.stringify({
-          error: "Validation failed",
-          missing: {
-            name: !name,
-            email: !email,
-            message: !message
-          }
-        }),
+        JSON.stringify({ error: "Name and at least phone or message are required." }),
         { status: 400, headers: { "Content-Type": "application/json" } }
       );
     }
 
     const RESEND_API_KEY = context.env.RESEND_API_KEY;
-
     if (!RESEND_API_KEY) {
       console.error("Missing RESEND_API_KEY in environment variables.");
       return new Response(
@@ -56,17 +45,16 @@ export async function onRequestPost(context) {
       body: JSON.stringify({
         from: "Contact Form <onboarding@resend.dev>",
         to: ["abhishek791996@gmail.com"],
-        reply_to: email,
-        subject: `New Inquiry from ${name} - ${service || "General"}`,
+        subject: `New Client Query: ${name} (${service})`,
         html: `
-          <h2>New Contact Submission</h2>
+          <h2>New Consultation Inquiry</h2>
           <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone || "Not provided"}</p>
-          <p><strong>Service:</strong> ${service || "Not selected"}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Service Requested:</strong> ${service}</p>
+          <p><strong>User Email:</strong> ${email || "Not provided"}</p>
           <br/>
           <p><strong>Message:</strong></p>
-          <p>${message.replace(/\\n/g, "<br/>")}</p>
+          <p>${message.replace(/\n/g, "<br/>")}</p>
         `
       })
     });
@@ -75,13 +63,13 @@ export async function onRequestPost(context) {
       const errText = await emailResponse.text();
       console.error("Resend API error:", errText);
       return new Response(
-        JSON.stringify({ error: "Failed to deliver email." }),
+        JSON.stringify({ error: "Failed to send email." }),
         { status: 500, headers: { "Content-Type": "application/json" } }
       );
     }
 
     return new Response(
-      JSON.stringify({ success: true, message: "Your message has been sent successfully!" }),
+      JSON.stringify({ success: true, message: "Query submitted successfully!" }),
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
   } catch (err) {
